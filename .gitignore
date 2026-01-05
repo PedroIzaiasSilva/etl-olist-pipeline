@@ -1,0 +1,47 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+
+# =========================
+# Data layers (ignore data files)
+# =========================
+data/raw/*
+data/staging/*
+data/analytics/*
+
+# Keep folder structure
+!data/raw/.gitkeep
+!data/staging/.gitkeep
+!data/analytics/.gitkeep
+
+# Optional: allow sample files
+!data/raw/sample_*.csv
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
+# Docker
+# =========================
+*.pid
+
+# =========================
+# OS / IDE
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
