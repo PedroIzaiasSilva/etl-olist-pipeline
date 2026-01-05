@@ -53,6 +53,8 @@ def extract():
         print(f'{name}: {df.shape[0]} lines | {df.shape[1]} columns')
 
     print('Extraction completed successfully')
+    
+    return dataframes
 
 if __name__ == "__main__":
     extract()

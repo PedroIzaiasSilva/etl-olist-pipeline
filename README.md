@@ -21,18 +21,16 @@ engineering projects:
 -   **Staging**: Cleaned, standardized, and validated data
 -   **Analytics**: Business-ready datasets optimized for analysis
 
-```{=html}
-<!-- -->
-```
+
     raw → staging → analytics
 
 ------------------------------------------------------------------------
 
 ## Tech Stack
 
--   Python
--   Docker
--   Docker Compose
+- Python (ETL logic)
+- Docker (containerization)
+- Docker Compose (pipeline orchestration)
 
 ------------------------------------------------------------------------
 
@@ -62,10 +60,10 @@ engineering projects:
 
 1.  **Extract**
     -   Reads source files from the raw layer
-    -   Performs basic validation and ingestion
+    -   Performs basic ingestion and validation
 2.  **Transform**
     -   Cleans and standardizes data
-    -   Applies transformations for downstream usage
+    -   Applies transformations for downstream consumption
     -   Writes processed data into staging and analytics layers
 
 ------------------------------------------------------------------------
@@ -129,4 +127,5 @@ DB_PASSWORD=password
 
 ## Author
 
-Pedro Izaías
+Pedro Izaías  
+Data Analyst | Aspiring Data Engineer
