@@ -1,42 +1,47 @@
-# ETL Pipeline -- Olist Dataset
+# End-to-End Batch ETL Pipeline — Olist Dataset
 
 ## Overview
 
-This project implements an ETL (Extract, Transform, Load) pipeline using
-the Olist public dataset. The goal is to ingest raw data, apply
-transformations, and organize it into structured data layers following
-data engineering best practices.
+This project implements an end-to-end batch ETL (Extract, Transform, Load) pipeline
+using the Olist public dataset.
 
-The project is designed to be modular, scalable, and reproducible using
-containerized execution.
+The objective is to apply data engineering best practices to ingest raw data,
+transform it into structured layers, and persist analytical datasets into a
+relational database.
 
-------------------------------------------------------------------------
+This project reflects my transition from Data Analyst to Data Engineer, with a strong
+focus on data architecture, modular pipelines, reproducibility, and containerized
+execution.
+
+---
 
 ## Data Architecture
 
-The pipeline follows a layered data architecture commonly used in data
-engineering projects:
+The pipeline follows a layered data architecture commonly adopted in data engineering
+projects:
 
--   **Raw**: Original source data with no transformations
--   **Staging**: Cleaned, standardized, and validated data
--   **Analytics**: Business-ready datasets optimized for analysis
+- **Raw**: Original source data with no transformations
+- **Staging**: Cleaned, standardized, and validated data
+- **Analytics**: Business-ready datasets optimized for analytical use cases
 
+```
+Raw → Staging → Analytics → Database
+```
 
-    raw → staging → analytics
-
-------------------------------------------------------------------------
+---
 
 ## Tech Stack
 
-- Python (ETL logic)
-- Docker (containerization)
-- Docker Compose (pipeline orchestration)
+- **Python** — ETL logic and data transformations
+- **PostgreSQL** — Data persistence layer
+- **Docker** — Containerized execution
+- **Docker Compose** — Pipeline orchestration
 
-------------------------------------------------------------------------
+---
 
 ## Project Structure
 
-``` text
+```text
 .
 ├── data/
 │   ├── raw/
@@ -45,85 +50,96 @@ engineering projects:
 │
 ├── etl/
 │   ├── extract.py
-│   └── transform.py
+│   ├── transform.py
+│   └── load.py
 │
 ├── docker/
+│   └── postgres/
+│       └── init.sql
 │
 ├── docker-compose.yml
 ├── .gitignore
 └── README.md
 ```
 
-------------------------------------------------------------------------
+---
 
 ## ETL Flow
 
-1.  **Extract**
-    -   Reads source files from the raw layer
-    -   Performs basic ingestion and validation
-2.  **Transform**
-    -   Cleans and standardizes data
-    -   Applies transformations for downstream consumption
-    -   Writes processed data into staging and analytics layers
+1. **Extract**
+   - Reads source datasets from the raw layer
+   - Performs basic ingestion and validation
 
-------------------------------------------------------------------------
+2. **Transform**
+   - Cleans and standardizes data
+   - Applies transformations for downstream consumption
+   - Writes processed data into staging and analytics layers
+
+3. **Load**
+   - Loads analytical datasets into a PostgreSQL database
+   - Initializes schemas and tables using SQL scripts
+
+---
 
 ## How to Run
 
 ### Prerequisites
 
--   Docker
--   Docker Compose
+- Docker
+- Docker Compose
 
 ### Steps
 
-1.  Clone the repository
+1. Clone the repository
 
-``` bash
+```bash
 git clone <repository-url>
 cd <repository-name>
 ```
 
-2.  Run the pipeline
+2. Run the ETL pipeline
 
-``` bash
+```bash
 docker-compose up
 ```
 
-------------------------------------------------------------------------
+---
 
 ## Environment Variables
 
-Sensitive configurations are managed using a `.env` file, which is
-intentionally excluded from version control.
+Sensitive configurations are managed using a `.env` file, which is intentionally
+excluded from version control.
 
 Example:
 
-``` env
+```env
 DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=analytics
 DB_USER=user
 DB_PASSWORD=password
 ```
 
-------------------------------------------------------------------------
+---
 
 ## Notes
 
--   Large datasets and generated files are excluded from the repository
--   Folder structure is versioned using `.gitkeep` files
--   The project focuses on code quality and architectural clarity
+- Large datasets and generated files are excluded from the repository
+- Folder structure is versioned using `.gitkeep` files
+- Database initialization is handled via Docker entrypoint scripts
+- The project prioritizes code quality, clarity, and scalable architecture
 
-------------------------------------------------------------------------
+---
 
 ## Future Improvements
 
--   Add a load layer to persist data into a database or data warehouse
--   Implement data quality checks
--   Add logging and monitoring
--   Integrate workflow orchestration (e.g., Airflow)
--   Add unit tests for transformations
+- Add data quality checks and validation rules
+- Introduce logging and monitoring
+- Integrate workflow orchestration (e.g., Apache Airflow)
+- Add unit tests for ETL logic
+- Extend the pipeline for incremental loads
 
-------------------------------------------------------------------------
+---
 
 ## Author
 
