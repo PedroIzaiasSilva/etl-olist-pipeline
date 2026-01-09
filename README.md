@@ -43,10 +43,15 @@ Raw → Staging → Analytics → Database
 
 ```text
 .
+├── analytics/
+│   ├── 01_create_schema.sql
+│   ├── 02_dim_customers.sql
+│   ├── 03_dim_products.sql
+│   ├── 04_dim_date.sql
+│   └── 05_fact_sales.sql
 ├── data/
 │   ├── raw/
-│   ├── staging/
-│   └── analytics/
+│   └── staging/
 │
 ├── etl/
 │   ├── extract.py
